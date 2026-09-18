@@ -115,40 +115,74 @@
 
       <section class="features section" id="features">
         <div class="shell">
-          <header class="section-heading reveal">
-            <p class="section-index">02 / FEATURES</p>
-            <h2>主な機能</h2>
-            <p>必要なものを見つけて確認して<br />必要なものだけ整理できます</p>
+          <header class="section-heading section-heading--features reveal">
+            <div>
+              <p class="section-index">02 / FEATURES</p>
+              <h2>7つの機能</h2>
+              <p>必要な機能だけを横に追って見られます</p>
+            </div>
+            <div class="feature-controls" aria-label="機能スライド操作">
+              <button class="feature-arrow feature-arrow--prev" type="button" aria-label="前の機能">←</button>
+              <button class="feature-arrow feature-arrow--next" type="button" aria-label="次の機能">→</button>
+            </div>
           </header>
 
-          <div class="feature-grid">
-            <article class="feature-item reveal">
-              <span class="feature-number">01</span>
-              <div class="feature-symbol" aria-hidden="true">✦</div>
-              <h3>不要ファイルの整理</h3>
-              <p>キャッシュログ一時ファイルなど</p>
-            </article>
-            <article class="feature-item reveal">
-              <span class="feature-number">02</span>
-              <div class="feature-symbol feature-symbol--rings" aria-hidden="true"></div>
-              <h3>重複ファイル</h3>
-              <p>SHA-256でファイル内容を比較</p>
-            </article>
-            <article class="feature-item reveal">
-              <span class="feature-number">03</span>
-              <div class="feature-symbol" aria-hidden="true">▰</div>
-              <h3>大きなファイル</h3>
-              <p>容量を使っているファイルを確認</p>
-            </article>
-            <article class="feature-item reveal">
-              <span class="feature-number">04</span>
-              <div class="feature-symbol" aria-hidden="true">⌫</div>
-              <h3>アプリのアンインストール</h3>
-              <p>アプリ本体と関連ファイルをまとめて整理</p>
-            </article>
-          </div>
+          <div class="feature-carousel reveal" data-feature-carousel>
+            <div class="feature-rail" tabindex="0" aria-label="Sweeplineの7つの機能">
+              <article class="feature-slide">
+                <span class="feature-number">01</span>
+                <p class="feature-kicker">SMART SCAN</p>
+                <h3>まず全体を見る</h3>
+                <p>Macの中をスキャンして整理できる容量を一望</p>
+              </article>
 
-          <p class="minor-features reveal"><span>＋ 起動項目</span><span>＋ 状態モニタ</span></p>
+              <article class="feature-slide">
+                <span class="feature-number">02</span>
+                <p class="feature-kicker">CLEANUP</p>
+                <h3>不要ファイルを整理</h3>
+                <p>キャッシュ ログ 一時ファイル 開発ジャンクを確認</p>
+              </article>
+
+              <article class="feature-slide">
+                <span class="feature-number">03</span>
+                <p class="feature-kicker">DUPLICATES</p>
+                <h3>重複を見つける</h3>
+                <p>SHA-256で中身を比較して同じファイルを検出</p>
+              </article>
+
+              <article class="feature-slide">
+                <span class="feature-number">04</span>
+                <p class="feature-kicker">LARGE FILES</p>
+                <h3>大きなファイルを見る</h3>
+                <p>容量を使っているファイルを見つけてFinderで確認</p>
+              </article>
+
+              <article class="feature-slide">
+                <span class="feature-number">05</span>
+                <p class="feature-kicker">UNINSTALLER</p>
+                <h3>アプリを片付ける</h3>
+                <p>アプリ本体と残った関連ファイルをまとめて整理</p>
+              </article>
+
+              <article class="feature-slide">
+                <span class="feature-number">06</span>
+                <p class="feature-kicker">STARTUP ITEMS</p>
+                <h3>起動項目を確認</h3>
+                <p>LaunchAgentsとDaemonsを見て不要な項目を整理</p>
+              </article>
+
+              <article class="feature-slide">
+                <span class="feature-number">07</span>
+                <p class="feature-kicker">STATUS</p>
+                <h3>Macの状態を見る</h3>
+                <p>CPU メモリ ディスクを読み取り専用で表示</p>
+              </article>
+            </div>
+
+            <div class="feature-progress" aria-hidden="true">
+              <span class="feature-progress-bar"></span>
+            </div>
+          </div>
         </div>
       </section>
 
