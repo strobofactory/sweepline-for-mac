@@ -182,18 +182,30 @@
           </header>
 
           <div class="faq-list reveal">
-            <details><summary>削除したファイルは元に戻せますか？<span aria-hidden="true"></span></summary><p>はい。Sweeplineはファイルを完全消去せず、すべてゴミ箱へ移動します。間違えて削除してしまっても、ゴミ箱から元の場所に戻せます。また、実行する前に必ず対象の一覧が表示されるので、何が削除されるのかを自分の目で確認してから進められます。</p></details>
-            <details><summary>システムの大事なファイルを消してしまう心配はありませんか？<span aria-hidden="true"></span></summary><p>/System や /Library/Developer などのシステム管理下の領域は検出対象から除外しています。削除すべきでない領域が候補として表示されないよう設計しています。</p></details>
-            <details><summary>メモリ解放や高速化の機能はありますか？<span aria-hidden="true"></span></summary><p>ありません。Sweeplineができるのは、実際にディスクの空き容量を回収することだけです。メモリ解放や高速化をうたう機能は搭載していません。表示される数値もすべて実測値です。</p></details>
-            <details><summary>買い切りですか？サブスクリプションですか？<span aria-hidden="true"></span></summary><p>買い切りです。一度ご購入いただければ、月額や年額の請求はありません。</p></details>
-            <details><summary>何台のMacで使えますか？<span aria-hidden="true"></span></summary><p>1つのライセンスで2台までご利用いただけます。</p></details>
-            <details><summary>Macを買い替えたときはどうなりますか？<span aria-hidden="true"></span></summary><p>旧Macで認証を解除すると、その分のライセンス枠が空きます。新しいMacで同じライセンスキーを入力して利用できます。</p></details>
-            <details><summary>購入後、どうやって受け取りますか？<span aria-hidden="true"></span></summary><p>購入後、ダウンロードリンクとライセンスキーがメールで届きます。</p></details>
-            <details><summary>動作環境を教えてください。<span aria-hidden="true"></span></summary><p>macOS 14 Sonoma以降に対応しています。Apple SiliconとIntelの両方に対応しています。</p></details>
-            <details><summary>インストール時に警告が出ませんか？<span aria-hidden="true"></span></summary><p>Appleの公証（Notarization）を取得しています。DMGを開き、アプリケーションフォルダへ移動してインストールします。</p></details>
-            <details><summary>アップデートはどうなりますか？<span aria-hidden="true"></span></summary><p>アプリ内で新しいバージョンを確認し、そのまま更新できます。アップデートは無料です。</p></details>
-            <details><summary>重複ファイルの検出はどのくらい正確ですか？<span aria-hidden="true"></span></summary><p>ファイル名ではなくSHA-256で内容を比較します。名前が違っていても内容が同じファイルを検出できます。ハードリンクは重複として扱いません。</p></details>
-            <details><summary>オフラインでも使えますか？<span aria-hidden="true"></span></summary><p>初回ライセンス認証にはインターネット接続が必要ですが、その後はオフラインでも通常どおり利用できます。</p></details>
+            <details>
+              <summary>削除しても大丈夫ですか？元に戻せますか？<span aria-hidden="true"></span></summary>
+              <p>Sweeplineはファイルを完全消去せず、すべてmacOSのゴミ箱へ移動します。実行前に削除対象を確認でき、/System やXcode CoreSimulatorなど削除すべきでないシステム領域は検出対象から除外しています。</p>
+            </details>
+            <details>
+              <summary>メモリ解放やMacの高速化もできますか？<span aria-hidden="true"></span></summary>
+              <p>いいえ。Sweeplineが行うのは、実際にディスクを使用している不要ファイルを見つけ、空き容量を回収することです。高速化やメモリ最適化をうたう機能は搭載しておらず、表示する容量は実測値です。</p>
+            </details>
+            <details>
+              <summary>買い切りですか？何台まで使えますか？<span aria-hidden="true"></span></summary>
+              <p>2,980円の買い切りで、月額・年額料金はありません。1つのライセンスでMac 2台まで利用できます。Macを買い替える場合は、旧Macの認証を解除して同じライセンスキーを新しいMacで利用できます。</p>
+            </details>
+            <details>
+              <summary>対応しているMacとmacOSを教えてください。<span aria-hidden="true"></span></summary>
+              <p>macOS 14 Sonoma以降に対応しています。Apple Silicon（M1以降）とIntel Macの両方に対応しています。</p>
+            </details>
+            <details>
+              <summary>購入後の受け取り・インストール・アップデートは？<span aria-hidden="true"></span></summary>
+              <p>購入後、ダウンロードリンクとライセンスキーをメールでお送りします。Apple Notarization取得済みで、DMGからアプリケーションフォルダへ移動してインストールできます。新しいバージョンはアプリ内で確認・更新でき、アップデートは無料です。</p>
+            </details>
+            <details>
+              <summary>重複ファイルの判定やオフライン利用について教えてください。<span aria-hidden="true"></span></summary>
+              <p>重複ファイルはファイル名ではなくSHA-256で内容を比較し、ハードリンクは重複として扱いません。初回ライセンス認証にはインターネット接続が必要ですが、その後はオフラインでも通常どおり利用できます。</p>
+            </details>
           </div>
         </div>
       </section>
