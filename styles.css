@@ -599,3 +599,43 @@ h1 { font-size: clamp(3rem, 4vw, 4.2rem); }
     height: 5px;
   }
 }
+
+
+/* Hero product identity */
+.hero-product-mark {
+  display: inline-flex;
+  align-items: center;
+  gap: 14px;
+  margin-bottom: 22px;
+  color: #fff;
+}
+.hero-product-mark > span:last-child {
+  display: grid;
+  line-height: 1.04;
+}
+.hero-product-mark strong {
+  font-size: 1.05rem;
+  letter-spacing: -.02em;
+}
+.hero-product-mark small {
+  margin-top: 5px;
+  color: var(--muted);
+  font-size: .72rem;
+}
+.icon-crop--hero {
+  width: 58px;
+  height: 58px;
+  border-radius: 24%;
+  box-shadow: 0 0 30px rgba(24, 215, 255, .18);
+}
+
+@media (max-width: 600px) {
+  .hero-product-mark {
+    gap: 12px;
+    margin-bottom: 18px;
+  }
+  .icon-crop--hero {
+    width: 52px;
+    height: 52px;
+  }
+}
