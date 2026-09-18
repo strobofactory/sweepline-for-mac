@@ -44,3 +44,39 @@ document.querySelectorAll('.faq-list details').forEach((item) => {
     });
   });
 });
+
+
+const featureCarousel = document.querySelector('[data-feature-carousel]');
+if (featureCarousel) {
+  const rail = featureCarousel.querySelector('.feature-rail');
+  const prev = document.querySelector('.feature-arrow--prev');
+  const next = document.querySelector('.feature-arrow--next');
+  const progress = featureCarousel.querySelector('.feature-progress-bar');
+
+  const getStep = () => {
+    const firstSlide = rail?.querySelector('.feature-slide');
+    if (!rail || !firstSlide) return 320;
+    const styles = window.getComputedStyle(rail);
+    const gap = parseFloat(styles.columnGap || styles.gap || '0') || 0;
+    return firstSlide.getBoundingClientRect().width + gap;
+  };
+
+  const updateFeatureProgress = () => {
+    if (!rail || !progress) return;
+    const maxScroll = Math.max(1, rail.scrollWidth - rail.clientWidth);
+    const ratio = Math.min(1, Math.max(0, rail.scrollLeft / maxScroll));
+    progress.style.transform = `translateX(${ratio * 455}%)`;
+  };
+
+  prev?.addEventListener('click', () => {
+    rail?.scrollBy({ left: -getStep(), behavior: 'smooth' });
+  });
+
+  next?.addEventListener('click', () => {
+    rail?.scrollBy({ left: getStep(), behavior: 'smooth' });
+  });
+
+  rail?.addEventListener('scroll', updateFeatureProgress, { passive: true });
+  window.addEventListener('resize', updateFeatureProgress, { passive: true });
+  updateFeatureProgress();
+}
