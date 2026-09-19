@@ -80,3 +80,56 @@ if (featureCarousel) {
   window.addEventListener('resize', updateFeatureProgress, { passive: true });
   updateFeatureProgress();
 }
+
+
+const heroSection = document.querySelector('.hero-section');
+if (heroSection && !window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+  let heroMotionFrame = 0;
+
+  const clamp01 = (value) => Math.min(1, Math.max(0, value));
+
+  const updateHeroMotion = () => {
+    heroMotionFrame = 0;
+
+    const rect = heroSection.getBoundingClientRect();
+    const viewportHeight = Math.max(1, window.innerHeight);
+    const travel = Math.max(1, rect.height + viewportHeight * 0.15);
+    const progress = clamp01((-rect.top) / travel);
+    const isMobile = window.innerWidth <= 820;
+
+    const bgY = progress * (isMobile ? 28 : 72);
+    const bgScale = 1.035 + progress * (isMobile ? 0.035 : 0.085);
+
+    const copyFadeStart = isMobile ? 0.58 : 0.42;
+    const copyProgress = clamp01((progress - copyFadeStart) / (1 - copyFadeStart));
+    const copyY = -progress * (isMobile ? 12 : 34);
+    const copyOpacity = 1 - copyProgress * (isMobile ? 0.42 : 0.76);
+
+    const visualProgress = clamp01((progress - 0.10) / 0.90);
+    const visualY = -visualProgress * (isMobile ? 18 : 58);
+    const visualScale = 1 - visualProgress * (isMobile ? 0.025 : 0.065);
+    const visualOpacity = 1 - clamp01((progress - 0.72) / 0.28) * 0.46;
+
+    const overlayOpacity = 1 - progress * 0.18;
+    const orbitScale = 1 + progress * 0.16;
+
+    heroSection.style.setProperty('--hero-bg-y', `${bgY.toFixed(2)}px`);
+    heroSection.style.setProperty('--hero-bg-scale', bgScale.toFixed(4));
+    heroSection.style.setProperty('--hero-copy-y', `${copyY.toFixed(2)}px`);
+    heroSection.style.setProperty('--hero-copy-opacity', copyOpacity.toFixed(3));
+    heroSection.style.setProperty('--hero-visual-y', `${visualY.toFixed(2)}px`);
+    heroSection.style.setProperty('--hero-visual-scale', visualScale.toFixed(4));
+    heroSection.style.setProperty('--hero-visual-opacity', visualOpacity.toFixed(3));
+    heroSection.style.setProperty('--hero-overlay-opacity', overlayOpacity.toFixed(3));
+    heroSection.style.setProperty('--hero-orbit-scale', orbitScale.toFixed(4));
+  };
+
+  const requestHeroMotion = () => {
+    if (heroMotionFrame) return;
+    heroMotionFrame = window.requestAnimationFrame(updateHeroMotion);
+  };
+
+  updateHeroMotion();
+  window.addEventListener('scroll', requestHeroMotion, { passive: true });
+  window.addEventListener('resize', requestHeroMotion, { passive: true });
+}
