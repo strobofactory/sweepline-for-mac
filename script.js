@@ -181,14 +181,14 @@ if (scrollStory) {
 
 const globalRevealGroups = [
   { selector: '.philosophy-copy', type: 'soft', stagger: 0 },
-  { selector: '.philosophy-points > p', type: 'line', stagger: 90 },
+  { selector: '.philosophy-points > p', type: 'line', stagger: 45 },
   { selector: '.philosophy .measured', type: 'soft', stagger: 0 },
   { selector: '.features .section-heading', type: 'soft', stagger: 0 },
-  { selector: '.feature-slide', type: 'scale', stagger: 85 },
+  { selector: '.feature-slide', type: 'scale', stagger: 45 },
   { selector: '.feature-progress', type: 'line', stagger: 0 },
   { selector: '.story-intro', type: 'soft', stagger: 0 },
   { selector: '.faq .section-heading', type: 'soft', stagger: 0 },
-  { selector: '.faq-list details', type: 'line', stagger: 70 },
+  { selector: '.faq-list details', type: 'line', stagger: 40 },
   { selector: '.purchase-panel', type: 'scale', stagger: 0 },
   { selector: '.footer-inner', type: 'soft', stagger: 0 }
 ];
@@ -203,7 +203,7 @@ globalRevealGroups.forEach(({ selector, type, stagger }) => {
 
     element.classList.add('scroll-reveal');
     element.dataset.reveal = type;
-    element.style.setProperty('--reveal-delay', `${Math.min(index * stagger, 420)}ms`);
+    element.style.setProperty('--reveal-delay', `${Math.min(index * stagger, 180)}ms`);
     globalRevealItems.push(element);
   });
 });
@@ -220,8 +220,8 @@ if (reducedMotion || !('IntersectionObserver' in window)) {
       globalRevealObserver.unobserve(entry.target);
     });
   }, {
-    threshold: 0.12,
-    rootMargin: '0px 0px -10% 0px'
+    threshold: 0.04,
+    rootMargin: '0px 0px 18% 0px'
   });
 
   globalRevealItems.forEach((element) => globalRevealObserver.observe(element));
