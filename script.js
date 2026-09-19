@@ -133,3 +133,47 @@ if (heroSection && !window.matchMedia('(prefers-reduced-motion: reduce)').matche
   window.addEventListener('scroll', requestHeroMotion, { passive: true });
   window.addEventListener('resize', requestHeroMotion, { passive: true });
 }
+
+
+const scrollStory = document.querySelector('[data-scroll-story]');
+if (scrollStory) {
+  const chapters = [...scrollStory.querySelectorAll('[data-story-step]')];
+  const screens = [...scrollStory.querySelectorAll('.story-screen')];
+  const status = scrollStory.querySelector('[data-story-status]');
+  const labels = ['MEASURED ONLY', 'CONFIRM BEFORE DELETE', 'PROTECTED AREAS EXCLUDED'];
+
+  const setStoryStep = (step) => {
+    const safeStep = Math.min(chapters.length - 1, Math.max(0, Number(step) || 0));
+    scrollStory.dataset.activeStep = String(safeStep);
+
+    chapters.forEach((chapter, index) => {
+      chapter.classList.toggle('is-active', index === safeStep);
+    });
+
+    screens.forEach((screen, index) => {
+      screen.classList.toggle('is-active', index === safeStep);
+    });
+
+    if (status) status.textContent = labels[safeStep] || labels[0];
+  };
+
+  if ('IntersectionObserver' in window) {
+    const storyObserver = new IntersectionObserver((entries) => {
+      const visible = entries
+        .filter((entry) => entry.isIntersecting)
+        .sort((a, b) => b.intersectionRatio - a.intersectionRatio);
+
+      if (!visible.length) return;
+      setStoryStep(visible[0].target.dataset.storyStep);
+    }, {
+      rootMargin: '-28% 0px -38% 0px',
+      threshold: [0.15, 0.3, 0.5, 0.7]
+    });
+
+    chapters.forEach((chapter) => storyObserver.observe(chapter));
+  } else {
+    setStoryStep(0);
+  }
+
+  setStoryStep(0);
+}
