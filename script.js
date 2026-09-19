@@ -181,19 +181,19 @@ if (scrollStory) {
 
 const globalRevealGroups = [
   { selector: '.philosophy-copy', type: 'soft', stagger: 0 },
-  { selector: '.philosophy-points > p', type: 'line', stagger: 45 },
+  { selector: '.philosophy-points > p', type: 'line', stagger: 35 },
   { selector: '.philosophy .measured', type: 'soft', stagger: 0 },
   { selector: '.features .section-heading', type: 'soft', stagger: 0 },
-  { selector: '.feature-slide', type: 'scale', stagger: 45 },
+  { selector: '.feature-slide', type: 'scale', stagger: 40 },
   { selector: '.feature-progress', type: 'line', stagger: 0 },
   { selector: '.story-intro', type: 'soft', stagger: 0 },
   { selector: '.faq .section-heading', type: 'soft', stagger: 0 },
-  { selector: '.faq-list details', type: 'line', stagger: 40 },
+  { selector: '.faq-list details', type: 'line', stagger: 30 },
   { selector: '.purchase-panel', type: 'scale', stagger: 0 },
   { selector: '.footer-inner', type: 'soft', stagger: 0 }
 ];
 
-const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 const globalRevealItems = [];
 
 globalRevealGroups.forEach(({ selector, type, stagger }) => {
@@ -203,16 +203,16 @@ globalRevealGroups.forEach(({ selector, type, stagger }) => {
 
     element.classList.add('scroll-reveal');
     element.dataset.reveal = type;
-    element.style.setProperty('--reveal-delay', `${Math.min(index * stagger, 180)}ms`);
+    element.style.setProperty('--reveal-delay', `${Math.min(index * stagger, 120)}ms`);
     globalRevealItems.push(element);
   });
 });
 
-document.documentElement.classList.add('motion-ready');
-
-if (reducedMotion || !('IntersectionObserver' in window)) {
+if (prefersReducedMotion || !('IntersectionObserver' in window)) {
   globalRevealItems.forEach((element) => element.classList.add('is-revealed'));
 } else {
+  document.documentElement.classList.add('motion-ready');
+
   const globalRevealObserver = new IntersectionObserver((entries) => {
     entries.forEach((entry) => {
       if (!entry.isIntersecting) return;
@@ -220,9 +220,14 @@ if (reducedMotion || !('IntersectionObserver' in window)) {
       globalRevealObserver.unobserve(entry.target);
     });
   }, {
-    threshold: 0.04,
-    rootMargin: '0px 0px 18% 0px'
+    threshold: 0.01,
+    rootMargin: '0px 0px -6% 0px'
   });
 
-  globalRevealItems.forEach((element) => globalRevealObserver.observe(element));
+  // Allow the hidden state to paint before observation starts.
+  requestAnimationFrame(() => {
+    requestAnimationFrame(() => {
+      globalRevealItems.forEach((element) => globalRevealObserver.observe(element));
+    });
+  });
 }
