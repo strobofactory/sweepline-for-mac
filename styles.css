@@ -645,8 +645,10 @@ h1 { font-size: clamp(3rem, 4vw, 4.2rem); }
 }
 
 .hero-product-mark--after-lead {
+  display: flex;
+  width: fit-content;
   margin-top: -10px;
-  margin-bottom: 28px;
+  margin-bottom: 38px;
 }
 .hero-product-mark > span:last-child {
   display: grid;
@@ -675,8 +677,10 @@ h1 { font-size: clamp(3rem, 4vw, 4.2rem); }
   }
 
   .hero-product-mark--after-lead {
+    display: flex;
+    width: fit-content;
     margin-top: -6px;
-    margin-bottom: 24px;
+    margin-bottom: 32px;
   }
 
   .icon-crop--hero {
