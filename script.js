@@ -177,3 +177,52 @@ if (scrollStory) {
 
   setStoryStep(0);
 }
+
+
+const globalRevealGroups = [
+  { selector: '.philosophy-copy', type: 'soft', stagger: 0 },
+  { selector: '.philosophy-points > p', type: 'line', stagger: 90 },
+  { selector: '.philosophy .measured', type: 'soft', stagger: 0 },
+  { selector: '.features .section-heading', type: 'soft', stagger: 0 },
+  { selector: '.feature-slide', type: 'scale', stagger: 85 },
+  { selector: '.feature-progress', type: 'line', stagger: 0 },
+  { selector: '.story-intro', type: 'soft', stagger: 0 },
+  { selector: '.faq .section-heading', type: 'soft', stagger: 0 },
+  { selector: '.faq-list details', type: 'line', stagger: 70 },
+  { selector: '.purchase-panel', type: 'scale', stagger: 0 },
+  { selector: '.footer-inner', type: 'soft', stagger: 0 }
+];
+
+const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+const globalRevealItems = [];
+
+globalRevealGroups.forEach(({ selector, type, stagger }) => {
+  document.querySelectorAll(selector).forEach((element, index) => {
+    if (element.closest('.hero-section')) return;
+    if (element.classList.contains('scroll-reveal')) return;
+
+    element.classList.add('scroll-reveal');
+    element.dataset.reveal = type;
+    element.style.setProperty('--reveal-delay', `${Math.min(index * stagger, 420)}ms`);
+    globalRevealItems.push(element);
+  });
+});
+
+document.documentElement.classList.add('motion-ready');
+
+if (reducedMotion || !('IntersectionObserver' in window)) {
+  globalRevealItems.forEach((element) => element.classList.add('is-revealed'));
+} else {
+  const globalRevealObserver = new IntersectionObserver((entries) => {
+    entries.forEach((entry) => {
+      if (!entry.isIntersecting) return;
+      entry.target.classList.add('is-revealed');
+      globalRevealObserver.unobserve(entry.target);
+    });
+  }, {
+    threshold: 0.12,
+    rootMargin: '0px 0px -10% 0px'
+  });
+
+  globalRevealItems.forEach((element) => globalRevealObserver.observe(element));
+}
