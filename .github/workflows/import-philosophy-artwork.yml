@@ -1,0 +1,35 @@
+name: Import philosophy artwork
+
+on:
+  push:
+    branches:
+      - main
+    paths:
+      - .github/workflows/import-philosophy-artwork.yml
+
+permissions:
+  contents: write
+
+jobs:
+  import-artwork:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+
+      - name: Download original artwork
+        run: |
+          curl --fail --location 'https://pikaso.cdnpk.net/private/production/5493183590/3612715736.png?token=exp=1790035200~hmac=08cce42094113e08aea8e4ae92e2755f731c4a78cb886600f9324d668ef00446' --output assets/philosophy-person.png
+          file assets/philosophy-person.png
+          test -s assets/philosophy-person.png
+
+      - name: Commit artwork
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add assets/philosophy-person.png
+          if git diff --cached --quiet; then
+            exit 0
+          fi
+          git commit -m "Add original philosophy artwork"
+          git push
