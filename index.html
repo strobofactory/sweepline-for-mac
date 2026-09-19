@@ -186,59 +186,65 @@
         </div>
       </section>
 
-      <section class="how section" id="how-it-works">
-        <div class="shell how-grid">
-          <div class="process-visual reveal" aria-label="MacBook Proに表示されたSweeplineの操作画面">
-            <div class="macbook-pro macbook-pro--process">
-              <div class="macbook-lid">
-                <div class="macbook-camera" aria-hidden="true"></div>
-                <div class="app-frame app-frame--process">
-                  <img src="assets/smart-scan.webp" alt="Sweeplineのスキャン結果とゴミ箱へ移動する前の確認画面" />
+      <section class="scroll-story" id="how-it-works" data-scroll-story>
+        <div class="scroll-story-stage">
+          <div class="scroll-story-shell shell">
+            <div class="scroll-story-visual" aria-live="polite">
+              <div class="story-radar story-radar--one" aria-hidden="true"></div>
+              <div class="story-radar story-radar--two" aria-hidden="true"></div>
+
+              <div class="story-macbook">
+                <div class="macbook-pro macbook-pro--story">
+                  <div class="macbook-lid">
+                    <div class="macbook-camera" aria-hidden="true"></div>
+                    <div class="app-frame app-frame--story">
+                      <img class="story-screen story-screen--one is-active" src="assets/scan-result.webp" alt="Sweeplineのスキャン結果画面" />
+                      <img class="story-screen story-screen--two" src="assets/smart-scan.webp" alt="Sweeplineの確認画面" />
+                      <img class="story-screen story-screen--three" src="assets/scan-result.webp" alt="Sweeplineのスキャン結果画面" />
+                    </div>
+                  </div>
+                  <div class="macbook-base" aria-hidden="true">
+                    <div class="macbook-hinge"></div>
+                    <div class="macbook-trackpad"></div>
+                  </div>
                 </div>
               </div>
-              <div class="macbook-base" aria-hidden="true">
-                <div class="macbook-hinge"></div>
-                <div class="macbook-trackpad"></div>
+
+              <div class="story-status" aria-hidden="true">
+                <span class="story-status-dot"></span>
+                <span data-story-status>MEASURED ONLY</span>
               </div>
             </div>
-          </div>
-          <div class="how-copy reveal">
-            <p class="section-index">03 / HOW IT WORKS</p>
-            <h2>スキャンする<br />確認する<br /><em>必要なものだけ整理する</em></h2>
-            <p>Sweeplineは<br />見つけたファイルを勝手に削除しません</p>
-            <p>内容を確認してから<br />必要なものだけ整理できます</p>
-            <ol class="steps" aria-label="Sweeplineの使い方">
-              <li><b>01</b><span>スキャン</span></li>
-              <li><b>02</b><span>内容を確認</span></li>
-              <li><b>03</b><span>ゴミ箱へ移動</span></li>
-            </ol>
-          </div>
-        </div>
-      </section>
 
-      <section class="safety section" id="safety">
-        <div class="shell">
-          <header class="section-heading reveal">
-            <p class="section-index">04 / SAFETY</p>
-            <h2>安心して使える設計</h2>
-          </header>
+            <div class="scroll-story-copy">
+              <div class="story-intro">
+                <p class="section-index">03 / HOW IT WORKS</p>
+                <h2>掃除は<br />もっと単純でいい</h2>
+              </div>
 
-          <div class="safety-list">
-            <article class="safety-item reveal">
-              <span class="safety-mark" aria-hidden="true">01</span>
-              <div><h3>削除はゴミ箱へ</h3><p>完全消去せず<br />macOSのゴミ箱へ移動します</p></div>
-            </article>
-            <article class="safety-item reveal">
-              <span class="safety-mark" aria-hidden="true">02</span>
-              <div><h3>削除前に確認</h3><p>何を削除するのか<br />実行前に確認できます</p></div>
-            </article>
-            <article class="safety-item reveal">
-              <span class="safety-mark" aria-hidden="true">03</span>
-              <div><h3>システム領域を除外</h3><p>/System や Xcode CoreSimulatorなど<br />削除すべきでない領域は検出対象外です</p></div>
-            </article>
+              <article class="story-chapter is-active" data-story-step="0">
+                <p class="story-step">01 / MEASURE</p>
+                <h3>0.8GBなら<br /><em>0.8GB</em></h3>
+                <p>表示するのは実際に回収できる容量だけです</p>
+                <p>大きく見せるための数字ではなく 今のMacにあるものをそのまま見せます</p>
+              </article>
+
+              <article class="story-chapter" data-story-step="1">
+                <p class="story-step">02 / CONFIRM</p>
+                <h3>消す前に<br /><em>ちゃんと見る</em></h3>
+                <p>Sweeplineは見つけたファイルを勝手に削除しません</p>
+                <p>対象を確認して 必要なものだけをゴミ箱へ移動します</p>
+              </article>
+
+              <article class="story-chapter" data-story-step="2" id="safety">
+                <p class="story-step">03 / PROTECT</p>
+                <h3>危ないものは<br /><em>最初から見せない</em></h3>
+                <p>/SystemやXcode CoreSimulatorなど システム管理下の領域は検出対象から外しています</p>
+                <p>注意して使うことを求めるより 間違えにくい道具にするためです</p>
+                <p class="story-notarized"><span aria-hidden="true">✓</span> Apple公証済み</p>
+              </article>
+            </div>
           </div>
-
-          <p class="notarized reveal"><span aria-hidden="true">✓</span><strong>Apple公証済み</strong> Apple Notarization取得済み</p>
         </div>
       </section>
 
