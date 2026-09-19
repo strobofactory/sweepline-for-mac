@@ -1714,3 +1714,43 @@ h1 { font-size: clamp(3rem, 4vw, 4.2rem); }
     min-height: 660px;
   }
 }
+
+
+/* Feature card icons */
+.feature-slide .feature-number {
+  margin-bottom: 14px;
+}
+
+.feature-icon-wrap {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  width: 116px;
+  height: 116px;
+  margin: 0 0 24px;
+  overflow: hidden;
+}
+
+.feature-icon {
+  display: block;
+  width: 116px;
+  height: 116px;
+  object-fit: contain;
+  mix-blend-mode: screen;
+}
+
+@media (max-width: 600px) {
+  .feature-slide .feature-number {
+    margin-bottom: 12px;
+  }
+
+  .feature-icon-wrap,
+  .feature-icon {
+    width: 104px;
+    height: 104px;
+  }
+
+  .feature-icon-wrap {
+    margin-bottom: 20px;
+  }
+}
