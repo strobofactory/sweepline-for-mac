@@ -12,7 +12,43 @@
     <link rel="alternate" hreflang="x-default" href="../" />
     <link rel="stylesheet" href="../styles.css" />
     <script src="../script.js" defer></script>
-  </head>
+  <!-- LP analytics: existing Shopify GA4 property; purchase clicks are not purchases. -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-MC8YFMZMN9"></script>
+<script>
+(function () {
+  if (window.stroboLpAnalyticsInitialized) return;
+  window.stroboLpAnalyticsInitialized = true;
+  window.dataLayer = window.dataLayer || [];
+  window.gtag = window.gtag || function () { window.dataLayer.push(arguments); };
+  window.gtag('js', new Date());
+  window.gtag('config', 'G-MC8YFMZMN9', {
+    cookie_domain: 'auto',
+    allow_google_signals: false,
+    allow_ad_personalization_signals: false
+  });
+
+  function trackPurchaseClick(event) {
+    if ((event.type === 'click' && event.button !== 0) ||
+        (event.type === 'auxclick' && event.button !== 1)) return;
+    var link = event.target.closest && event.target.closest('a.button[href]');
+    if (!link) return;
+    var destination = new URL(link.href, window.location.href);
+    if (destination.origin !== 'https://strobofactory.net' ||
+        destination.pathname !== '/products/sweepline-for-mac') return;
+    window.gtag('event', 'lp_purchase_click', {
+      send_to: 'G-MC8YFMZMN9',
+      product_name: 'Sweepline for Mac',
+      product_id: '8772015784094',
+      lp_language: 'en',
+      lp_path: window.location.pathname
+    });
+  }
+  // Observe the real click without cancelling or delaying the existing navigation.
+  document.addEventListener('click', trackPurchaseClick);
+  document.addEventListener('auxclick', trackPurchaseClick);
+}());
+</script>
+</head>
   <body>
     <a class="skip-link" href="#main">Skip to content</a>
 
